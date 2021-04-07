@@ -30,3 +30,31 @@ console.log(randomNumbers);
 
 // un alert espone i 5 numeri randomici
 alert(randomNumbers);
+
+// step 2 : parte un timer di 30 secondi
+
+// creo una variabile per i secondi (30)
+var seconds = 30;
+// creo un array vuoto dove andranno ad aggiungersi i numeri inseriti dall'utente
+var numeriUtente = [];
+// tramite un setInterval avvio il countdown di 30 secondi
+var countdown = setInterval( function (){
+    console.log(seconds);
+    seconds-- ;
+    if (seconds === 0) {
+        // interrompo il countdown quando i secondi arrivano a 0
+        clearInterval(countdown);
+        //creo un ciclo WHILE affinché l'utente inserisca 5 numeri 
+        //in 5 prompt diversi alla fine del countdown
+        while(numeriUtente.length < numeri){
+            var numeroUtente = parseInt(prompt('Che numero ricordi?'));
+            //pusho i numeri inseriti dall'utente nel rispettivo array numeriUtente[]
+            numeriUtente.push(numeroUtente);
+            console.log(numeriUtente);
+        }
+        
+    }
+}, 1000);
+
+
+
