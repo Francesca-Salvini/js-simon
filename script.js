@@ -34,9 +34,11 @@ alert(randomNumbers);
 // step 2 : parte un timer di 30 secondi
 
 // creo una variabile per i secondi (30)
-var seconds = 30;
+var seconds = 30; 
 // creo un array vuoto dove andranno ad aggiungersi i numeri inseriti dall'utente
-var numeriUtente = [];
+
+
+
 // tramite un setInterval avvio il countdown di 30 secondi
 var countdown = setInterval( function (){
     console.log(seconds);
@@ -46,15 +48,38 @@ var countdown = setInterval( function (){
         clearInterval(countdown);
         //creo un ciclo WHILE affinché l'utente inserisca 5 numeri 
         //in 5 prompt diversi alla fine del countdown
+        var numeriUtente = [];
         while(numeriUtente.length < numeri){
+            
             var numeroUtente = parseInt(prompt('Che numero ricordi?'));
             //pusho i numeri inseriti dall'utente nel rispettivo array numeriUtente[]
-            numeriUtente.push(numeroUtente);
-            console.log(numeriUtente);
+            if(!numeriUtente.includes(numeroUtente)) {
+                numeriUtente.push(numeroUtente);
+            }
+            
         }
+        console.log(numeriUtente);
         
+        // step 3 : il software dice quanti e quali numeri l'utente ha ricordato correttamente
+        var indovinati = [];
+        //rendo iterabile l'array che contiene i numeri inseriti dall'utente
+        for( var i= 0; i < numeriUtente.length; i++){
+            var thisUserNumber = numeriUtente[i];
+            // console.log(thisUserNumber);
+
+            //faccio in modo che l'utente non inserisca duplicati
+            //nel caso lo facesse, il ciclo va avanti fino a che non ha inserito 5 numeri tutti diversi tra loro
+            if(randomNumbers.includes(thisUserNumber)){
+                indovinati.push(thisUserNumber);
+            }
+        }
+        console.log(indovinati);
+
+        // Output : risposta all'utente tramite alert
+        alert('Hai indovinato ' + indovinati.length + ' numeri. I numeri sono: ' + indovinati);
+        
+
+
+       
     }
 }, 1000);
-
-
-
